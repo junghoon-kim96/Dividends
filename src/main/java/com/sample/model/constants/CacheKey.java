@@ -1,6 +1,6 @@
 package com.sample.model.constants;
 
-public class CashKey {
+public class CacheKey {
 
     public static final String KEY_FINANCE = "finance";
 }

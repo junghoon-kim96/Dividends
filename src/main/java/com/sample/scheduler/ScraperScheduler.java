@@ -2,7 +2,7 @@ package com.sample.scheduler;
 
 import com.sample.model.Company;
 import com.sample.model.ScrapedResult;
-import com.sample.model.constants.CashKey;
+import com.sample.model.constants.CacheKey;
 import com.sample.persist.CompanyRepository;
 import com.sample.persist.DividendRepository;
 import com.sample.persist.entity.CompanyEntity;
@@ -10,7 +10,6 @@ import com.sample.persist.entity.DividendEntity;
 import com.sample.scraper.Scraper;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.cfg.NotYetImplementedException;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -27,7 +26,7 @@ public class ScraperScheduler {
     private final Scraper yahooFinanceScraper;
     private final DividendRepository dividendRepository;
 
-    @CacheEvict(value = CashKey.KEY_FINANCE, allEntries = true)
+    @CacheEvict(value = CacheKey.KEY_FINANCE, allEntries = true)
     @Scheduled(cron = "${scheduler.scrap.yahoo}")
     public void yahooFinanceScheduling() {
 

@@ -3,7 +3,7 @@ package com.sample.service;
 import com.sample.model.Company;
 import com.sample.model.Dividend;
 import com.sample.model.ScrapedResult;
-import com.sample.model.constants.CashKey;
+import com.sample.model.constants.CacheKey;
 import com.sample.persist.CompanyRepository;
 import com.sample.persist.DividendRepository;
 import com.sample.persist.entity.CompanyEntity;
@@ -13,7 +13,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,7 +24,7 @@ public class FinanceService {
     private final CompanyRepository companyRepository;
     private final DividendRepository dividendRepository;
 
-    @Cacheable(key = "#companyName", value = CashKey.KEY_FINANCE)
+    @Cacheable(key = "#companyName", value = CacheKey.KEY_FINANCE)
     public ScrapedResult getDividendByCompanyName(String companyName){
         log.info("search company -> " + companyName);
 
